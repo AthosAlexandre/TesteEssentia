@@ -1,9 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-/**
- * @param {{ code?: number; message?: string }} props
- */
 export default function NotFound({ code = 404, message }) {
   const { pathname } = useLocation()
   const isNotFound = code === 404

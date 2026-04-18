@@ -129,7 +129,6 @@ export default function Header() {
           <span className="w-11 justify-self-end" aria-hidden />
         </div>
 
-        {/* Desktop: logo + links à esquerda */}
         <div className="hidden items-center justify-start gap-10 py-4 md:flex lg:gap-14">
           <Link
             to="/"

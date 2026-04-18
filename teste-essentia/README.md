@@ -1,16 +1,69 @@
-# React + Vite
+# noorskin — teste prático Essentia Group
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto front-end de **teste prático** para a **Essentia Group**: landing em React com Vite, Tailwind CSS v4, roteamento e layout inspirado em marca de skincare (`noorskin`).
 
-Currently, two official plugins are available:
+> Essentia Group — exercício prático
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## O que tem aqui
 
-## React Compiler
+- **React 19** + **Vite 8**
+- **Tailwind CSS v4** com `@tailwindcss/vite`
+- **React Router** — rotas em `src/routes/routes.config.js`, layout com header/footer, página 404 fora do layout
+- **Página Home** com **5 seções** em `src/page/home/sections/` (componentizadas por pasta)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estrutura (resumo)
 
-## Expanding the ESLint configuration
+Pastas principais do `src/` para navegar no código:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── App.jsx
+├── main.jsx
+├── index.css
+├── layout/
+│   ├── MainLayout.jsx
+│   ├── nav-links.js
+│   └── components/
+├── routes/
+│   ├── AppRoutes.jsx
+│   └── routes.config.js
+└── page/
+    ├── home/
+    │   ├── index.jsx
+    │   └── sections/
+    │       ├── renasca-com-nutricao/
+    │       ├── living-in-consciousness/
+    │       ├── informacao-nutricional/
+    │       ├── sua-forca-vem-de-dentro/
+    │       └── avaliacoes/
+    └── not-found/
+```
+
+## Como rodar
+
+Na pasta do projeto (`teste-essentia`):
+
+```bash
+npm install
+npm run dev
+```
+
+Abre o endereço que o Vite mostrar no terminal (geralmente `http://localhost:5173`).
+
+Outros scripts:
+
+| Comando        | O que faz              |
+| -------------- | ---------------------- |
+| `npm run dev`  | Servidor de desenvolvimento com hot reload |
+| `npm run build` | Build de produção em `dist/` |
+| `npm run preview` | Preview do build |
+| `npm run lint` | ESLint |
+
+## Requisitos
+
+- **Node.js** recente (recomendado 20 LTS ou superior)
+- **npm** (vem com o Node)
+
+---
+
+Feito para o processo da Essentia Group.
