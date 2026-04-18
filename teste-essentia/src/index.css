@@ -4,3 +4,19 @@
   --font-logo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-nav: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role='button'][aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  a[href] {
+    cursor: pointer;
+  }
+}
