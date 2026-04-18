@@ -4,7 +4,7 @@ import { navLinks } from '../nav-links.js'
 
 function navClassName({ isActive }) {
   return [
-    'font-nav text-sm tracking-wide text-stone-100 transition hover:text-white',
+    'font-nav font-light text-sm tracking-wide text-stone-100 transition hover:text-white',
     isActive ? 'underline decoration-white/40 underline-offset-4' : '',
   ]
     .filter(Boolean)
@@ -83,7 +83,7 @@ export default function Header() {
                 to={to}
                 className={({ isActive }) =>
                   [
-                    'rounded-md px-3 py-3 text-base text-stone-100 transition hover:bg-white/10',
+                    'font-nav font-light rounded-md px-3 py-3 text-base text-stone-100 transition hover:bg-white/10',
                     isActive ? 'bg-white/10' : '',
                   ]
                     .filter(Boolean)
@@ -121,7 +121,7 @@ export default function Header() {
           </button>
           <Link
             to="/"
-            className="font-logo justify-self-center text-2xl font-medium tracking-[0.02em] text-stone-50"
+            className="font-logo inline-block origin-center scale-y-110 justify-self-center text-[calc(1.5rem+7px)] font-light tracking-[0.02em] text-stone-50"
             onClick={() => setMenuOpen(false)}
           >
             noorskin
@@ -133,7 +133,7 @@ export default function Header() {
         <div className="hidden items-center justify-start gap-10 py-4 md:flex lg:gap-14">
           <Link
             to="/"
-            className="font-logo shrink-0 text-[1.65rem] font-medium tracking-[0.02em] text-stone-50"
+            className="font-logo inline-block origin-center scale-y-110 shrink-0 text-[calc(1.65rem+7px)] font-light tracking-[0.02em] text-stone-50"
             onClick={() => setMenuOpen(false)}
           >
             noorskin
