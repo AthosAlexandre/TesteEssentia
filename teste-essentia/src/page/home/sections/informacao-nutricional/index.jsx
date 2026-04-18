@@ -1,4 +1,23 @@
+import { motion } from 'framer-motion'
 import { useId, useState } from 'react'
+
+const accordionEase = [0.32, 0.72, 0, 1]
+
+const panelListVariants = {
+  open: {
+    opacity: 1,
+    transition: { staggerChildren: 0.055, delayChildren: 0.06 },
+  },
+  closed: {
+    opacity: 0,
+    transition: { staggerChildren: 0.025, staggerDirection: -1 },
+  },
+}
+
+const panelLineVariants = {
+  open: { opacity: 1, y: 0 },
+  closed: { opacity: 0, y: 12 },
+}
 
 const ACCORDION_ITEMS = [
   {
@@ -95,28 +114,49 @@ export default function InformacaoNutricionalSection() {
                         onClick={() => setOpenId(isOpen ? null : item.id)}
                       >
                         <span>{item.title}</span>
-                        <span
-                          className="shrink-0 font-nav text-2xl font-light leading-none text-[#BD8457] sm:text-[1.65rem]"
+                        <motion.span
+                          key={isOpen ? 'minus' : 'plus'}
+                          className="inline-block shrink-0 font-nav text-2xl font-light leading-none text-[#BD8457] sm:text-[1.65rem]"
                           aria-hidden
+                          initial={{ opacity: 0, scale: 0.75, rotate: isOpen ? -12 : 12 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ duration: 0.28, ease: accordionEase }}
                         >
                           {isOpen ? '\u2212' : '+'}
-                        </span>
+                        </motion.span>
                       </button>
                     </h3>
-                    <div
+                    <motion.div
                       id={panelId}
                       role="region"
                       aria-labelledby={buttonId}
-                      hidden={!isOpen}
+                      aria-hidden={!isOpen}
+                      initial={false}
+                      animate={{
+                        height: isOpen ? 'auto' : 0,
+                        opacity: isOpen ? 1 : 0,
+                      }}
+                      transition={{
+                        height: { duration: 0.52, ease: accordionEase },
+                        opacity: { duration: 0.35, ease: accordionEase },
+                      }}
+                      className="overflow-hidden"
                     >
                       {item.lines.length > 0 ? (
-                        <div className="font-nav space-y-3 pb-5 text-sm font-light leading-relaxed text-white/85 sm:text-[0.95rem]">
+                        <motion.div
+                          className="font-nav space-y-3 pb-5 text-sm font-light leading-relaxed text-white/85 sm:text-[0.95rem]"
+                          variants={panelListVariants}
+                          initial="closed"
+                          animate={isOpen ? 'open' : 'closed'}
+                        >
                           {item.lines.map((line) => (
-                            <p key={line}>{line}</p>
+                            <motion.p key={line} variants={panelLineVariants}>
+                              {line}
+                            </motion.p>
                           ))}
-                        </div>
+                        </motion.div>
                       ) : null}
-                    </div>
+                    </motion.div>
                   </div>
                 )
               })}
