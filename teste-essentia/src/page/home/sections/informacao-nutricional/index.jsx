@@ -1,5 +1,12 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useId, useState } from 'react'
+import SectionContentReveal from '../../../../components/SectionContentReveal.jsx'
+import {
+  blurFadeUp,
+  cardScaleBlur,
+  reducedSnap,
+  textMaskReveal,
+} from '../../../../lib/sectionRevealVariants.js'
 
 const accordionEase = [0.32, 0.72, 0, 1]
 
@@ -75,6 +82,10 @@ const ACCORDION_ITEMS = [
 export default function InformacaoNutricionalSection() {
   const baseId = useId()
   const [openId, setOpenId] = useState('vitaminas')
+  const reduce = useReducedMotion()
+  const line = reduce ? reducedSnap : textMaskReveal
+  const fade = reduce ? reducedSnap : blurFadeUp
+  const block = reduce ? reducedSnap : cardScaleBlur
 
   return (
     <section
@@ -85,19 +96,24 @@ export default function InformacaoNutricionalSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 lg:gap-x-16">
           <div className="hidden md:block" aria-hidden />
           <div className="w-full max-w-xl md:max-w-none md:justify-self-end lg:max-w-[28rem]">
-            <h2
-              id="secao-informacao-nutricional-titulo"
-              className="font-nav text-[clamp(1.85rem,4.2vw,2.65rem)] font-light leading-[1.08] tracking-tight text-white"
-            >
-              Informação
-              <br />
-              Nutricional
-            </h2>
-            <p className="font-nav mt-5 text-sm font-light leading-relaxed text-white/90 sm:mt-6 sm:text-base">
-              Porções por embalagem: 30 (120 cápsulas)
-            </p>
+            <SectionContentReveal>
+              <motion.h2
+                variants={line}
+                id="secao-informacao-nutricional-titulo"
+                className="font-nav text-[clamp(1.85rem,4.2vw,2.65rem)] font-light leading-[1.08] tracking-tight text-white"
+              >
+                Informação
+                <br />
+                Nutricional
+              </motion.h2>
+              <motion.p
+                variants={fade}
+                className="font-nav mt-5 text-sm font-light leading-relaxed text-white/90 sm:mt-6 sm:text-base"
+              >
+                Porções por embalagem: 30 (120 cápsulas)
+              </motion.p>
 
-            <div className="mt-8 border-t border-[#BD8457] sm:mt-10">
+              <motion.div variants={block} className="mt-8 border-t border-[#BD8457] sm:mt-10">
               {ACCORDION_ITEMS.map((item) => {
                 const isOpen = openId === item.id
                 const panelId = `${baseId}-${item.id}-panel`
@@ -160,7 +176,8 @@ export default function InformacaoNutricionalSection() {
                   </div>
                 )
               })}
-            </div>
+              </motion.div>
+            </SectionContentReveal>
           </div>
         </div>
       </div>

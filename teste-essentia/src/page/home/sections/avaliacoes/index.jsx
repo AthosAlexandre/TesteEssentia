@@ -1,4 +1,14 @@
+import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
+import SectionContentReveal from '../../../../components/SectionContentReveal.jsx'
+import {
+  blurFadeUp,
+  innerStaggerBlock,
+  reducedInnerStagger,
+  reducedSnap,
+  revealEase,
+  textMaskReveal,
+} from '../../../../lib/sectionRevealVariants.js'
 import { fetchReviews } from '../../../../services/reviews.js'
 
 const PAGE_SIZE = 2
@@ -24,6 +34,10 @@ export default function AvaliacoesSection() {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(true)
   const [pageIndex, setPageIndex] = useState(0)
+  const reduce = useReducedMotion()
+  const line = reduce ? reducedSnap : textMaskReveal
+  const fade = reduce ? reducedSnap : blurFadeUp
+  const inner = reduce ? reducedInnerStagger : innerStaggerBlock
 
   useEffect(() => {
     let cancelled = false
@@ -61,30 +75,39 @@ export default function AvaliacoesSection() {
       aria-labelledby="secao-avaliacoes-titulo"
     >
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 md:py-20 lg:px-10">
-        <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b pb-6 sm:gap-x-4 ${DIVIDER}`}>
-          <h2
-            id="secao-avaliacoes-titulo"
-            className="font-logo text-[clamp(2rem,4vw,2.75rem)] font-normal leading-tight tracking-tight text-stone-900"
-          >
-            Avaliações
-          </h2>
-          <p
-            className="font-logo text-[clamp(1.1rem,2.2vw,1.65rem)] font-normal italic leading-none tracking-tight text-stone-800"
-            aria-label="Média de 5 em 5"
-          >
-            5/5
-          </p>
-        </div>
-
         {loading ? (
           <div className={`py-16 text-center font-nav text-sm text-stone-500 ${DIVIDER} border-b`}>
             Carregando…
           </div>
         ) : (
-          <>
-            <div
+          <SectionContentReveal className="flex flex-col">
+            <motion.div
+              variants={inner}
+              className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b pb-6 sm:gap-x-4 ${DIVIDER}`}
+            >
+              <motion.h2
+                variants={line}
+                id="secao-avaliacoes-titulo"
+                className="font-logo text-[clamp(2rem,4vw,2.75rem)] font-normal leading-tight tracking-tight text-stone-900"
+              >
+                Avaliações
+              </motion.h2>
+              <motion.p
+                variants={fade}
+                className="font-logo text-[clamp(1.1rem,2.2vw,1.65rem)] font-normal italic leading-none tracking-tight text-stone-800"
+                aria-label="Média de 5 em 5"
+              >
+                5/5
+              </motion.p>
+            </motion.div>
+
+            {/* initial/animate por página: variantes + whileInView (once) do pai não voltam a disparar ao mudar key */}
+            <motion.div
               key={pageIndex}
               className="avaliacoes-carousel-panel grid grid-cols-1 gap-10 py-10 sm:grid-cols-2 sm:gap-12 md:gap-14 lg:gap-16"
+              initial={reduce ? { opacity: 1, y: 0, filter: 'blur(0px)' } : { opacity: 0, y: 14, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: reduce ? 0 : 0.5, ease: revealEase }}
             >
               {visibleReviews.map((review) => (
                 <article key={review.id} className="min-w-0">
@@ -99,9 +122,10 @@ export default function AvaliacoesSection() {
                   </p>
                 </article>
               ))}
-            </div>
+            </motion.div>
 
-            <div
+            <motion.div
+              variants={fade}
               className={`flex items-center justify-center gap-6 border-t pt-8 sm:gap-10 ${DIVIDER}`}
               aria-label="Paginação das avaliações"
             >
@@ -138,8 +162,8 @@ export default function AvaliacoesSection() {
               >
                 →
               </button>
-            </div>
-          </>
+            </motion.div>
+          </SectionContentReveal>
         )}
       </div>
     </section>

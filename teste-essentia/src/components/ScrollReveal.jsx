@@ -12,12 +12,14 @@ export default function ScrollReveal({ children, className = '', delay = 0 }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      /* Só opacidade no wrapper: translateY altera o rect e o whileInView da secção seguinte
+         pode disparar no meio da animação da primeira (once: true “gasta” o efeito). */
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{
         once: true,
-        amount: 0.08,
-        margin: '0px 0px 12% 0px',
+        amount: 0.2,
+        margin: '0px 0px -14% 0px',
       }}
       transition={{
         duration: 4.5,
