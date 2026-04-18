@@ -31,7 +31,7 @@ export default function Header() {
   }, [menuOpen])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#3D3935] text-stone-100 shadow-sm">
+    <header className="fixed left-0 right-0 top-0 z-50 w-full border-b border-white/5 border-t-[0.5px] border-t-white bg-[#3D3935] text-stone-100 shadow-sm">
       <div
         className={`fixed inset-0 md:hidden ${
           menuOpen ? 'z-[3] pointer-events-auto' : 'z-[1] pointer-events-none'
