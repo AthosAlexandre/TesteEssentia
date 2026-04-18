@@ -1,8 +1,10 @@
 import { useId } from 'react'
+import { useTopToast } from '../context/TopToastContext.jsx'
 import Button from './Button.jsx'
 
 export default function ProductCard({ imageSrc, nameLine1, nameLine2, price, imageAlt }) {
   const titleId = useId()
+  const { showToast } = useTopToast()
   const label = imageAlt ?? `${nameLine1} ${nameLine2}`
 
   return (
@@ -32,7 +34,13 @@ export default function ProductCard({ imageSrc, nameLine1, nameLine2, price, ima
         {price}
       </p>
       <div className="mt-[calc(1.25rem-15px)] w-full sm:mt-[calc(1.5rem-10px)]">
-        <Button type="button" aria-label={`Adicionar ${nameLine1} ${nameLine2} ao carrinho`}>
+        <Button
+          type="button"
+          aria-label={`Adicionar ${nameLine1} ${nameLine2} ao carrinho`}
+          onClick={() =>
+            showToast(`${nameLine1} — adicionado ao carrinho`)
+          }
+        >
           Adicionar ao carrinho
         </Button>
       </div>
