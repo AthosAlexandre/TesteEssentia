@@ -1,3 +1,4 @@
+import ScrollReveal from '../../components/ScrollReveal.jsx'
 import AvaliacoesSection from './sections/avaliacoes'
 import InformacaoNutricionalSection from './sections/informacao-nutricional'
 import LivingInConsciousnessSection from './sections/living-in-consciousness'
@@ -7,13 +8,23 @@ import SuaForcaVemDeDentroSection from './sections/sua-forca-vem-de-dentro'
 export default function Home() {
   return (
     <>
-      <RenascaComNutricaoSection />
-      <LivingInConsciousnessSection />
+      <ScrollReveal>
+        <RenascaComNutricaoSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <LivingInConsciousnessSection />
+      </ScrollReveal>
       <div className="flex flex-col-reverse md:contents">
-        <InformacaoNutricionalSection />
-        <SuaForcaVemDeDentroSection />
+        <ScrollReveal>
+          <InformacaoNutricionalSection />
+        </ScrollReveal>
+        <ScrollReveal>
+          <SuaForcaVemDeDentroSection />
+        </ScrollReveal>
       </div>
-      <AvaliacoesSection />
+      <ScrollReveal>
+        <AvaliacoesSection />
+      </ScrollReveal>
     </>
   )
 }

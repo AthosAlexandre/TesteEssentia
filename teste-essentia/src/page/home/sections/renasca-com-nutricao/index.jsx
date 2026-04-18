@@ -2,9 +2,12 @@ import mulherSegurandoSerumFacial from '../../../../assets/mulher-segurando-seru
 
 export default function RenascaComNutricaoSection() {
   return (
-    <section aria-labelledby="secao-renasca-com-nutricao-titulo">
-      <div className="flex min-h-0 flex-col md:min-h-[min(36rem,85vh)] md:max-h-[40rem] md:flex-row">
-        <div className="flex min-h-[min(52svh,30rem)] flex-1 flex-col bg-[#22211F] md:min-h-0 md:w-1/2">
+    <section
+      aria-labelledby="secao-renasca-com-nutricao-titulo"
+      className="min-h-[calc(100svh-4.75rem)] md:min-h-[calc(100svh-5.25rem)]"
+    >
+      <div className="flex min-h-[calc(100svh-4.75rem)] flex-col md:min-h-[calc(100svh-5.25rem)] md:flex-row">
+        <div className="flex min-h-0 flex-1 flex-col bg-[#22211F] md:w-1/2 md:min-h-full">
           <div className="flex flex-1 flex-col items-center justify-end px-5 pb-12 pt-8 sm:px-8 md:pb-14 md:pt-12">
             <div className="w-full max-w-[min(22.5rem,calc(100vw-2.5rem))] text-left sm:max-w-[min(24rem,calc(100vw-3rem))] md:max-w-[21rem]">
               <h2
@@ -23,11 +26,11 @@ export default function RenascaComNutricaoSection() {
             </div>
           </div>
         </div>
-        <div className="relative w-full flex-shrink-0 overflow-hidden md:w-1/2 md:flex-1 md:min-h-[min(36rem,85vh)] md:max-h-[40rem]">
+        <div className="relative flex min-h-0 w-full flex-1 flex-shrink-0 overflow-hidden md:w-1/2 md:min-h-full">
           <img
             src={mulherSegurandoSerumFacial}
             alt="Mulher segurando sérum facial, iluminação suave e acolhedora."
-            className="block w-full min-w-full object-cover object-center max-md:h-[min(58svh,36rem)] md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
+            className="block h-full min-h-0 w-full min-w-full object-cover object-center md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
             loading="lazy"
             decoding="async"
           />
