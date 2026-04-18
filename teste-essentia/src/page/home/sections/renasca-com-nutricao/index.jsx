@@ -1,23 +1,37 @@
+import mulherSegurandoSerumFacial from '../../../../assets/mulher-segurando-serum-facial.jpg'
+
 export default function RenascaComNutricaoSection() {
   return (
-    <section
-      className="bg-stone-100"
-      aria-labelledby="secao-renasca-com-nutricao-titulo"
-    >
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <p className="font-nav text-xs font-light uppercase tracking-[0.2em] text-stone-500">
-          Nutrição
-        </p>
-        <h2
-          id="secao-renasca-com-nutricao-titulo"
-          className="font-logo mt-3 max-w-3xl text-[clamp(2rem,5vw,3.25rem)] font-light leading-tight tracking-tight text-[#3D3935]"
-        >
-          Renasça com nutrição
-        </h2>
-        <p className="font-nav mt-6 max-w-2xl text-base font-light leading-relaxed text-stone-600 md:text-lg">
-          Um convite a reencontrar equilíbrio e vitalidade através do que você consome — com
-          consciência, gentileza e ciência ao seu lado.
-        </p>
+    <section aria-labelledby="secao-renasca-com-nutricao-titulo">
+      <div className="flex min-h-0 flex-col md:min-h-[min(36rem,85vh)] md:max-h-[40rem] md:flex-row">
+        <div className="flex min-h-[min(52svh,30rem)] flex-1 flex-col bg-[#22211F] md:min-h-0 md:w-1/2">
+          <div className="flex flex-1 flex-col items-center justify-end px-5 pb-12 pt-8 sm:px-8 md:pb-14 md:pt-12">
+            <div className="w-full max-w-[min(22.5rem,calc(100vw-2.5rem))] text-left sm:max-w-[min(24rem,calc(100vw-3rem))] md:max-w-[21rem]">
+              <h2
+                id="secao-renasca-com-nutricao-titulo"
+                className="font-nav text-[clamp(calc(1.65rem+7px),calc(3.8vw+7px),calc(2.75rem+7px))] font-light leading-[1.05] tracking-tight text-white md:text-[clamp(1.65rem,3.8vw,2.75rem)]"
+              >
+                Renasça{'\u00A0'}com
+                <br />
+                nutrição
+              </h2>
+              <p className="font-nav mt-6 text-left text-[calc(0.75rem+7px)] font-light leading-relaxed text-white/90 sm:mt-7 sm:text-[calc(0.875rem+7px)] md:mt-8 md:text-[calc(0.78rem+4px)] md:leading-[1.58]">
+                Renaissance resgata a integridade da queratina, reconstruindo a arquitetura de fios
+                e unhas contra os desgastes do cotidiano. Uma nutrição essencial que cura a fibra
+                profundamente, devolvendo a força e o brilho que nascem de dentro.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="relative w-full flex-shrink-0 overflow-hidden md:w-1/2 md:flex-1 md:min-h-[min(36rem,85vh)] md:max-h-[40rem]">
+          <img
+            src={mulherSegurandoSerumFacial}
+            alt="Mulher segurando sérum facial, iluminação suave e acolhedora."
+            className="block w-full min-w-full object-cover object-center max-md:h-[min(58svh,36rem)] md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
   )
