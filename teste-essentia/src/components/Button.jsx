@@ -1,0 +1,11 @@
+export default function Button({ children, type = 'button', className = '', ...rest }) {
+  return (
+    <button
+      type={type}
+      className={`w-full bg-black px-4 py-2.5 text-center font-nav text-sm font-medium tracking-wide text-white transition hover:bg-zinc-900 sm:whitespace-nowrap sm:px-2.5 sm:py-2 sm:text-[0.6875rem] sm:leading-tight sm:tracking-tight ${className}`.trim()}
+      {...rest}
+    >
+      {children}
+    </button>
+  )
+}
