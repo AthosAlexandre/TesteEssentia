@@ -21,7 +21,6 @@ export const innerStaggerBlock = {
   },
 }
 
-/** Blur + subida (estilo “blur fade”) */
 export const blurFadeUp = {
   hidden: { opacity: 0, y: 22, filter: 'blur(10px)' },
   visible: {
@@ -32,7 +31,6 @@ export const blurFadeUp = {
   },
 }
 
-/** “Máscara” / linha — subida um pouco mais marcada, sem blur */
 export const textMaskReveal = {
   hidden: { opacity: 0, y: 28 },
   visible: {
@@ -42,7 +40,6 @@ export const textMaskReveal = {
   },
 }
 
-/** Cards: scale out leve + blur (pousa no tamanho final) */
 export const cardScaleBlur = {
   hidden: { opacity: 0, y: 26, scale: 1.05, filter: 'blur(6px)' },
   visible: {
@@ -54,7 +51,6 @@ export const cardScaleBlur = {
   },
 }
 
-/** Variantes neutras quando prefers-reduced-motion */
 export const reducedSnap = {
   hidden: {
     opacity: 1,

@@ -1,3 +1,5 @@
+import { loadMockOrSeed, MOCK_STORAGE_KEYS } from '../stores/mockLocalStorage.js'
+
 const MOCK_PRODUCTS = [
   {
     id: '1',
@@ -24,6 +26,9 @@ const MOCK_PRODUCTS = [
 
 export function fetchLivingConsciousnessProducts() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(MOCK_PRODUCTS), 280)
+    setTimeout(() => {
+      const data = loadMockOrSeed(MOCK_STORAGE_KEYS.livingProducts, MOCK_PRODUCTS)
+      resolve(data)
+    }, 280)
   })
 }

@@ -24,9 +24,6 @@ function upsertLink(rel, href) {
   el.setAttribute('href', href)
 }
 
-/**
- * Atualiza título, meta description, canonical e Open Graph em navegação (SPA).
- */
 export default function SEOHead() {
   const { pathname } = useLocation()
 

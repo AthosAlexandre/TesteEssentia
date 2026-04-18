@@ -1,3 +1,5 @@
+import { loadMockOrSeed, MOCK_STORAGE_KEYS } from '../stores/mockLocalStorage.js'
+
 const REVIEW_BODY =
   'Nutricosméticos são suplementos orais que fornecem nutrientes essenciais para a saúde da pele, cabelos e unhas. Seus micronutrientes auxiliam na formação de colágeno e oferecem proteção antioxidante contra radicais livres, atuando de forma concentrada para preservar sua beleza natural.'
 
@@ -14,6 +16,9 @@ const MOCK_REVIEWS = [
 
 export function fetchReviews() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(MOCK_REVIEWS), 320)
+    setTimeout(() => {
+      const data = loadMockOrSeed(MOCK_STORAGE_KEYS.reviews, MOCK_REVIEWS)
+      resolve(data)
+    }, 320)
   })
 }

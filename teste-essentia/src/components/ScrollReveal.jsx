@@ -12,8 +12,6 @@ export default function ScrollReveal({ children, className = '', delay = 0 }) {
   return (
     <motion.div
       className={className}
-      /* Só opacidade no wrapper: translateY altera o rect e o whileInView da secção seguinte
-         pode disparar no meio da animação da primeira (once: true “gasta” o efeito). */
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{
