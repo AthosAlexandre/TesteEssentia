@@ -9,8 +9,10 @@ export default function Home() {
     <>
       <RenascaComNutricaoSection />
       <LivingInConsciousnessSection />
-      <InformacaoNutricionalSection />
-      <SuaForcaVemDeDentroSection />
+      <div className="flex flex-col-reverse md:contents">
+        <InformacaoNutricionalSection />
+        <SuaForcaVemDeDentroSection />
+      </div>
       <AvaliacoesSection />
     </>
   )

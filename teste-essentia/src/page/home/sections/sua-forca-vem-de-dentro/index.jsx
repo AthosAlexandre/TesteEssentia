@@ -1,17 +1,22 @@
+import parallaxRenaissanceImg from '../../../../assets/parallax-renaissance.jpg'
+
 export default function SuaForcaVemDeDentroSection() {
   return (
     <section
-      className="bg-white"
+      className="relative isolate flex w-full min-h-[min(22rem,48svh)] items-center justify-center overflow-hidden sm:min-h-[26rem] md:min-h-[28rem] lg:min-h-[30rem]"
       aria-labelledby="secao-sua-forca-titulo"
     >
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-        <h2
-          id="secao-sua-forca-titulo"
-          className="font-nav text-2xl font-light text-stone-800 md:text-3xl"
-        >
-          Sua força vem de dentro
-        </h2>
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat md:bg-fixed"
+        style={{ backgroundImage: `url(${parallaxRenaissanceImg})` }}
+        aria-hidden
+      />
+      <h2
+        id="secao-sua-forca-titulo"
+        className="font-nav px-6 text-center font-normal leading-snug tracking-tight text-white [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] max-md:whitespace-nowrap max-md:text-[clamp(calc(0.8125rem+10px),calc(3.4vw+10px),calc(1rem+10px))] md:text-[clamp(calc(1.5rem+15px),calc(3.5vw+15px),calc(2.5rem+15px))]"
+      >
+        Sua força vem de dentro.
+      </h2>
     </section>
   )
 }
