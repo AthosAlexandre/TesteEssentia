@@ -32,21 +32,35 @@ export default function LivingInConsciousnessSection() {
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-14 lg:flex lg:flex-row lg:items-stretch lg:justify-center lg:gap-5 lg:px-5 lg:py-16 xl:gap-8">
         <div className="flex w-full justify-center lg:w-auto lg:min-w-0 lg:flex-none">
           {loading ? (
-            <div className="flex min-h-[14rem] w-full max-w-[23.875rem] items-center justify-center border border-[#CBAB96] bg-[#FFF9F4] font-nav text-sm text-stone-500 sm:max-w-[35.875rem]">
-              Carregando…
+            <div className="-mx-5 overflow-x-auto px-5 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-auto sm:max-w-[min(100%,35.875rem)] sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+              <div className="flex w-max flex-nowrap sm:w-full">
+                <div className="flex min-h-[14rem] w-[min(82vw,19.5rem)] shrink-0 items-center justify-center border border-[#CBAB96] bg-[#FFF9F4] font-nav text-sm text-stone-500 sm:w-full sm:max-w-none sm:shrink">
+                  Carregando…
+                </div>
+              </div>
             </div>
           ) : (
-            <div className="mx-auto flex w-full max-w-[23.875rem] flex-col divide-y divide-[#CBAB96] border border-[#CBAB96] sm:max-w-[min(100%,35.875rem)] sm:flex-row sm:divide-x sm:divide-y-0">
-              {products.map((product) => (
-                <div key={product.id} className="min-w-0 flex-1">
-                  <ProductCard
-                    imageSrc={IMAGE_MAP[product.imageKey]}
-                    nameLine1={product.nameLine1}
-                    nameLine2={product.nameLine2}
-                    price={product.price}
-                  />
-                </div>
-              ))}
+            <div
+              className="-mx-5 snap-x snap-mandatory overflow-x-auto overflow-y-visible scroll-pl-5 scroll-pr-5 px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-auto sm:max-w-[min(100%,35.875rem)] sm:snap-none sm:overflow-visible sm:scroll-pl-0 sm:scroll-pr-0 sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+              role="region"
+              aria-roledescription="carrossel"
+              aria-label="Produtos Living in Consciousness"
+            >
+              <div className="flex w-max flex-nowrap gap-3 sm:w-full sm:max-w-none sm:gap-0 sm:border sm:border-[#CBAB96] sm:divide-x sm:divide-[#CBAB96]">
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="w-[min(82vw,19.5rem)] shrink-0 snap-center bg-[#FFF9F4] max-sm:border max-sm:border-[#CBAB96] sm:w-auto sm:min-w-0 sm:flex-1 sm:shrink"
+                  >
+                    <ProductCard
+                      imageSrc={IMAGE_MAP[product.imageKey]}
+                      nameLine1={product.nameLine1}
+                      nameLine2={product.nameLine2}
+                      price={product.price}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
