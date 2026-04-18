@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+  --font-logo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-nav: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
