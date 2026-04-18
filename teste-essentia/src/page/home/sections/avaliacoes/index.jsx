@@ -61,14 +61,19 @@ export default function AvaliacoesSection() {
       aria-labelledby="secao-avaliacoes-titulo"
     >
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 md:py-20 lg:px-10">
-        <div className={`flex flex-wrap items-end justify-between gap-4 border-b pb-6 ${DIVIDER}`}>
+        <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b pb-6 sm:gap-x-4 ${DIVIDER}`}>
           <h2
             id="secao-avaliacoes-titulo"
             className="font-logo text-[clamp(2rem,4vw,2.75rem)] font-normal leading-tight tracking-tight text-stone-900"
           >
             Avaliações
           </h2>
-          <p className="font-nav text-sm font-light text-stone-700 sm:text-base">5/5</p>
+          <p
+            className="font-logo text-[clamp(1.1rem,2.2vw,1.65rem)] font-normal italic leading-none tracking-tight text-stone-800"
+            aria-label="Média de 5 em 5"
+          >
+            5/5
+          </p>
         </div>
 
         {loading ? (
@@ -77,7 +82,10 @@ export default function AvaliacoesSection() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2 sm:gap-12 md:gap-14 lg:gap-16">
+            <div
+              key={pageIndex}
+              className="avaliacoes-carousel-panel grid grid-cols-1 gap-10 py-10 sm:grid-cols-2 sm:gap-12 md:gap-14 lg:gap-16"
+            >
               {visibleReviews.map((review) => (
                 <article key={review.id} className="min-w-0">
                   <div className="flex flex-wrap items-end gap-x-4 gap-y-2">

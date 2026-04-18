@@ -20,3 +20,24 @@
     cursor: pointer;
   }
 }
+
+@keyframes avaliacoes-carousel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avaliacoes-carousel-panel {
+    animation: none;
+  }
+}
+
+.avaliacoes-carousel-panel {
+  animation: avaliacoes-carousel-enter 0.80s ease-out both;
+}
