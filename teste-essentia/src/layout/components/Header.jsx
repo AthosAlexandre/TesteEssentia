@@ -4,7 +4,7 @@ import { navLinks } from '../nav-links.js'
 
 function navClassName({ isActive }) {
   return [
-    'font-nav font-light text-sm tracking-wide text-stone-100 transition hover:text-white',
+    'font-nav font-light text-sm tracking-wide text-stone-100 transition-colors duration-200 ease-out hover:text-[#B29B62]',
     isActive ? 'underline decoration-white/40 underline-offset-4' : '',
   ]
     .filter(Boolean)
@@ -83,7 +83,7 @@ export default function Header() {
                 to={to}
                 className={({ isActive }) =>
                   [
-                    'font-nav font-light rounded-md px-3 py-3 text-base text-stone-100 transition hover:bg-white/10',
+                    'font-nav font-light rounded-md px-3 py-3 text-base text-stone-100 transition-colors duration-200 ease-out hover:bg-white/5 hover:text-[#B29B62]',
                     isActive ? 'bg-white/10' : '',
                   ]
                     .filter(Boolean)
