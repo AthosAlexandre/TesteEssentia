@@ -8,6 +8,7 @@ import SuaForcaVemDeDentroSection from './sections/sua-forca-vem-de-dentro'
 export default function Home() {
   return (
     <>
+      <h1 className="sr-only">noorskin — nutrição, pele e bem-estar</h1>
       <ScrollReveal>
         <RenascaComNutricaoSection />
       </ScrollReveal>

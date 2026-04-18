@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { PAGE_SEO, SITE_NAME } from '../../config/seo.js'
 
 export default function NotFound({ code = 404, message }) {
   const { pathname } = useLocation()
@@ -10,9 +11,19 @@ export default function NotFound({ code = 404, message }) {
     : 'Algo deu errado ao carregar esta página.'
 
   useEffect(() => {
-    document.title = `${code} · ${isNotFound ? 'Não encontrado' : 'Erro'}`
+    document.title = `${code} · ${isNotFound ? 'Não encontrado' : 'Erro'} · ${SITE_NAME}`
+
+    const robots = document.querySelector('meta[name="robots"]')
+    const prevRobots = robots?.getAttribute('content')
+    if (robots) {
+      robots.setAttribute('content', 'noindex, nofollow')
+    }
+
     return () => {
-      document.title = 'teste-essentia'
+      document.title = PAGE_SEO['/'].title
+      if (robots && prevRobots != null) {
+        robots.setAttribute('content', prevRobots)
+      }
     }
   }, [code, isNotFound])
 

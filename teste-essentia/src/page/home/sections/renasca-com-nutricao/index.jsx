@@ -57,9 +57,13 @@ export default function RenascaComNutricaoSection() {
           <img
             src={mulherSegurandoSerumFacial}
             alt="Mulher segurando sérum facial, iluminação suave e acolhedora."
+            width={1200}
+            height={1500}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="block h-full min-h-0 w-full min-w-full object-cover object-center md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
-            loading="lazy"
+            fetchPriority="high"
             decoding="async"
+            loading="eager"
           />
         </motion.div>
       </SectionContentReveal>

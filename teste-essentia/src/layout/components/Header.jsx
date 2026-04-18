@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { navLinks } from '../nav-links.js'
 
@@ -13,6 +13,27 @@ function navClassName({ isActive }) {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+  const closeButtonRef = useRef(null)
+  const openedByUserRef = useRef(false)
+
+  useEffect(() => {
+    if (menuOpen) {
+      openedByUserRef.current = true
+      const id = requestAnimationFrame(() => {
+        closeButtonRef.current?.focus()
+      })
+      return () => cancelAnimationFrame(id)
+    }
+    if (openedByUserRef.current) {
+      openedByUserRef.current = false
+      const id = requestAnimationFrame(() => {
+        menuButtonRef.current?.focus()
+      })
+      return () => cancelAnimationFrame(id)
+    }
+    return undefined
+  }, [menuOpen])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -59,6 +80,7 @@ export default function Header() {
         >
           <div className="flex items-center justify-start border-b border-white/10 px-3 py-3">
             <button
+              ref={closeButtonRef}
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-md text-stone-100 hover:bg-white/10"
               aria-label="Fechar menu"
@@ -102,6 +124,7 @@ export default function Header() {
         
         <div className="grid grid-cols-[2.75rem_1fr_2.75rem] items-center py-4 md:hidden">
           <button
+            ref={menuButtonRef}
             type="button"
             className="inline-flex h-11 w-11 items-center justify-center justify-self-start rounded-md text-stone-100 transition hover:bg-white/10"
             aria-label="Abrir menu"
